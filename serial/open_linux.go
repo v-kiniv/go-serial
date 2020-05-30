@@ -133,6 +133,8 @@ func makeTermios2(options OpenOptions) (*termios2, error) {
 
 	if options.RTSCTSFlowControl {
 		t2.c_cflag |= unix.CRTSCTS
+	} else {
+		t2.c_cflag ~= unix.HUPCL;
 	}
 
 	return t2, nil
